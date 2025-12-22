@@ -58,7 +58,7 @@
             justify-content: space-between;
             overflow: hidden;
             transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
-            position: relative; /* Needed for z-index context */
+            position: relative; 
         }
 
         .bento-card:hover {
@@ -87,27 +87,41 @@
             margin-bottom: 0.5rem;
         }
 
+        /* --- Button Styles --- */
+        .btn-app {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 10px 16px;
+            background-color: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn-app:hover {
+            background-color: #1a368d;
+            transform: translateY(-1px);
+        }
+
         /* --- Specific Card Layout & Sizing (Desktop) --- */
 
-        /* Card 1 (Profile): Large box (2x2) */
         #card-profile {
             grid-column: span 2;
             grid-row: span 2;
             justify-content: flex-start;
-            
-            /* --- PROFILE CARD BACKGROUND IMAGE (bg.jpg) --- */
             background-image: url('bg.jpg'); 
             background-size: cover;          
             background-position: center;     
             background-repeat: no-repeat;    
             background-color: transparent; 
-            color: var(--color-white); /* Default text color for the card */
-            
-            /* Reset border for a cleaner look with an image */
+            color: var(--color-white); 
             border: none;
         }
         
-        /* Add an overlay for contrast */
         #card-profile::before {
             content: "";
             position: absolute;
@@ -115,19 +129,16 @@
             left: 0;
             right: 0;
             bottom: 0;
-            /* Subtle dark gradient overlay */
             background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.7) 100%);
             border-radius: var(--border-radius-base);
             z-index: 1;
         }
 
-        /* Push content and links above the overlay */
         #card-profile > div, #card-profile .social-links {
             z-index: 2;
             position: relative;
         }
 
-        /* Ensure specific text elements use the white color for readability against the dark background */
         #card-profile .subtitle, 
         #profile-name, 
         #profile-tagline, 
@@ -137,10 +148,8 @@
         }
 
         #card-profile .social-links a:hover {
-            color: var(--color-accent) !important; /* Keep accent color for hover */
+            color: var(--color-accent) !important;
         }
-        /* --- END PROFILE CARD STYLES --- */
-
 
         #profile-name {
             font-size: 2.25rem;
@@ -169,33 +178,27 @@
             transition: color 0.2s;
         }
 
-        /* Card 2 (Location): Small box (1x1) */
         #card-location {
             grid-column: span 1;
         }
         
-        /* Card 4 (Case Study/Lab): Small box (1x1) */
         #card-lab {
             grid-column: span 1;
         }
         
-        /* Card 3 (Tech Stack/Subjects): Medium box (1x2) */
         #card-subjects {
             grid-column: span 1;
             grid-row: span 2;
         }
 
-        /* Card 5 (Hobby/Activity): Small box (1x1) */
         #card-hobby {
             grid-column: span 1;
         }
         
-        /* Card 7 (Reflection): Small box (1x1) */
         #card-reflection {
             grid-column: span 1;
         }
         
-        /* Card 6 (Playlist): Wide box at the bottom (4x1) */
         #card-playlist {
             grid-column: 1 / -1; 
             min-height: 100px;
@@ -203,7 +206,7 @@
             border-color: var(--color-accent);
         }
 
-        /* --- Mobile Responsiveness (Stacked Vertically) --- */
+        /* --- Mobile Responsiveness --- */
         @media (max-width: 768px) {
             .bento-container {
                 grid-template-columns: 1fr; 
@@ -252,8 +255,11 @@
             <div>
                 <div class="subtitle">Recent Case Study</div>
                 <h2 class="card-title">Starch Gelatinization in Local Kuih</h2>
+                <p class="card-content">Analyzing texture profiles and physicochemical changes during the preparation of traditional Kuih Lapis.</p>
             </div>
-            <p class="card-content">Analyzing texture profiles and physicochemical changes during the preparation of traditional Kuih Lapis.</p>
+            <div>
+                <a href="https://s78666.github.io/-focus-timer-app/app.html" target="_blank" class="btn-app">Try My Focus Timer App</a>
+            </div>
         </section>
         
         <section id="card-subjects" class="bento-card">
@@ -290,7 +296,9 @@
                 <div class="subtitle">Current Vibes</div>
                 <h2 class="card-title">Focus Playlist</h2>
             </div>
-            <p class="card-content"><iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/4XHijJfABTtUCW3Bp6KFvr?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>.</p>
+            <p class="card-content">
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/4XHijJfABTtUCW3Bp6KFvr?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </p>
         </section>
 
     </main>
